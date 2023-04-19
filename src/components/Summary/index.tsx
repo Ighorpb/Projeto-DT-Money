@@ -25,6 +25,7 @@ export function Summary() {
         total: 0,
     })
 
+
     return (
         <Container>
             <div>
@@ -52,7 +53,9 @@ export function Summary() {
                     }).format(summary.withdraws)}
                 </strong>
             </div>
-            <div className="highlight-background">
+            <div style={{
+                backgroundColor: summary.total < 0 ? 'red' : 'green', 
+            }}>
                 <header>
                     <p>Total</p>
                     <img src={imgTotal} alt="Seta para cima" />
@@ -64,6 +67,8 @@ export function Summary() {
                     }).format(summary.total)}
                 </strong>
             </div>
+
+            
 
         </Container>
     );

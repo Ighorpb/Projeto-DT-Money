@@ -1,12 +1,12 @@
 import { Container } from "./styles";
-import { TransactionsContext } from "../../hooks/useTransactions";
 import { useTransaction } from "../../hooks/useTransactions";
+import imgRemove from "../../assets/remover.svg"
 
 
 
 
 export function TransactiosTable() {
-    const { transactions } = useTransaction()
+    const { transactions, deleteTransaction } = useTransaction()
 
 
 
@@ -19,6 +19,7 @@ export function TransactiosTable() {
                         <th>Valor</th>
                         <th>Categoria</th>
                         <th>Data</th>
+                        <th>Excluir</th>
                     </tr>
                 </thead>
 
@@ -38,6 +39,14 @@ export function TransactiosTable() {
                                     {new Intl.DateTimeFormat('pt-BR').format(
                                         new Date(transaction.createdAt)
                                     )}
+                                </td>
+
+                                <td>
+                                    <button onClick={() => {
+                                        deleteTransaction(transaction.id)
+                                    }}>
+                                        <img src={imgRemove} alt="Lixeira" />
+                                    </button>
                                 </td>
                             </tr>
                         );
